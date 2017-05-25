@@ -80,8 +80,8 @@ object PatternMatching {
   val zeroInMiddleEnding1_ = list.filter(v => v._2 == 0 && v._3 == 1)
 
   val zeroInMiddleEnding1 = list.filter {
-    case (_, 0, _) 	=> true
-    case _ 		=> false
+    case (_, 0, 1)  => true
+    case _          => false
   }
   
 }

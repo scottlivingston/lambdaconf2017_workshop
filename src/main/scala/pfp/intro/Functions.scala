@@ -66,7 +66,13 @@ object Functions {
   foo.method(10)
 
   /** do they compose */
-  ???
+  val temp: String => Int = _.toInt
+
+  val a:  String => String = temp andThen foo.func
+  val a1: String => String = temp andThen foo.method
+
+  val b:  Int => Int = foo.func andThen temp
+  val b1: Int => Int = foo.method _ andThen temp
 
   /** methods can be polymorphic */
   def bar[A, B, C](a: A, b: B, make: (A, B) => C): C =
@@ -79,4 +85,7 @@ object Functions {
   def buz[F[_], A](f: F[A], tr: F[A] => A): A = tr(f)
   val buzres1: Int = buz[Option, Int](10.some, _.get)
   val buzres2: String = buz[Option, String]("hello".some, _.get)
+
+  val temp2: Either[String, Int] = ???
+//  buz[Either[String, ?], Int](temp)
 }
