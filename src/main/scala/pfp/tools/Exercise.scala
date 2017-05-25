@@ -10,7 +10,7 @@ object Exercise {
     val keys: Iterable[A] = m1.keys ++ m2.keys
     val zero = Monoid[B].zero
     val kvs = keys.map {
-      k => k -> (m1.get(k).getOrElse(zero) |+| m2.get(k).getOrElse(zero))
+      k => k -> (m1.getOrElse(k, zero) |+| m2.getOrElse(k, zero))
     }
     Map[A, B](kvs.toSeq: _*)
   }
