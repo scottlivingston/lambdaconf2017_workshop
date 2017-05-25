@@ -22,7 +22,7 @@ object Typeclasses {
     s"hi ${a.show}"
   }
 
-  def main(args: Array[String]): Unit = {
+  def main1(args: Array[String]): Unit = {
     implicit val UserShow: Show[User] = new Show[User] {
       def show(user: User) = s"${user.firstName} ${user.lastName}"
     }
