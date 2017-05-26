@@ -6,20 +6,12 @@ object InMemory {
 
   import Exercise.{User, S}
 
-  var internal: S = Map[Int, User]()
-
-  def fetchStore: Task[S] = Task.delay {
-    InMemory.internal
-  }
-
-  def saveStore: S => Task[Unit] = (s: S) => Task.delay {
-    InMemory.internal = s
-  }
+  var internal: S = (0, Map[Int, User]())
 }
 
 object Exercise {
 
-  type S = Map[Int, User]
+  type S = (Long, Map[Int, User])
 
   case class User(firstName: String, lastName: String)
 
